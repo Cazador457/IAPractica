@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Nova/Practica/INUBI.unity
+    guid: 9c1f31030f1be0544adc1f5dd0b5a6ba
+  - enabled: 1
+    path: Assets/Nova/Practica/MENU.unity
+    guid: 6a6de103229d4904cb5a08c741c2f1e6
+  - enabled: 1
+    path: Assets/Nova/Practica/NIVEL.unity
+    guid: 300f669c9d5971240acfd3e089f813cd
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
+  m_UseUCBPForAssetBundles: 0
