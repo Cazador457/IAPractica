@@ -2,6 +2,28 @@ using UnityEngine;
 
 public class Collection
 {
-    public string nombre;
-    public int value;
+    private string _nombre;
+    public string Nombre
+    {
+        get
+        {
+            return _nombre;
+        }
+        set
+        {
+
+        }
+    }
+    private int _value;
+    public int Value
+    {
+        get
+        {
+            return _value;
+        }
+        set
+        {
+
+        }
+    }
 }

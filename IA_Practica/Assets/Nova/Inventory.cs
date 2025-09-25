@@ -2,11 +2,33 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Inventory
 {
-    public string name;
-    public List<Collection> generic;
+    private string _name;
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+        set
+        {
+
+        }
+    }
+    private List<Collection> _generic;
+    public List<Collection> Generic
+    {
+        get
+        {
+            return _generic;
+        }
+        set
+        {
+
+        }
+    }
 
     public Inventory(string nombre)
     {
-        nombre = name;
+        nombre = Name;
     }
 }
