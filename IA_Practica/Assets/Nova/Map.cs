@@ -1,48 +1,104 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 public class Map
 {
-    private string _name;
-    public string Name
-    {
-        get
-        {
-            return _name;
-        }
-        set
-        {
-
-        }
-    }
-    private Vector2Int _origen;
-    public Vector2Int Origen
-    {
-        get
-        {
-            return _origen;
-        }
-        set
-        {
-
-        }
-    }
+    public enum MapType { Rectangle, Triangle, Line, Circle };
+    private Vector2Int _origin;
     private Vector2Int _size;
-    public Vector2Int Size
-    {
-        get
-        {
-            return _size;
-        }
-        set
-        {
+    private Tilemap _tilemap;
+    private MapType _type;
 
-        }
+    public Map(Vector2Int origin, Vector2Int size, Tilemap tilemap, MapType type)
+    {
+        _origin = origin;
+        _size = size;
+        _tilemap = tilemap;
+        _type = type;
     }
 
-    public Map(string nombre, Vector2Int baseorigen, Vector2Int basesize)
+    public List<Vector3Int> GenerateCoordinates()
     {
-        nombre = Name;
-        baseorigen = Origen;
-        basesize = Size;
+        List<Vector3Int> cordenadas = new List<Vector3Int>();
+        switch (_type)
+        {
+            case MapType.Rectangle:
+                {
+
+                    for (int x = _origin.x; x < _size.x + _origin.x; x++)
+                    {
+                        for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                        {
+                            Vector3Int cordenada = new Vector3Int(x, y, 0);
+                            cordenadas.Add(cordenada);
+                        }
+                    }
+                    return cordenadas;
+                }
+            case MapType.Triangle:
+                {
+                    for (int x = _origin.x; x < _size.x + _origin.x; x++)
+                    {
+                        for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                        {
+                            Vector3Int cordenada = new Vector3Int(x, y, 0);
+                            cordenadas.Add(cordenada);
+                        }
+                        _size.y--;
+                    }
+                    return cordenadas;
+                }
+
+            case MapType.Line:
+                {
+                    for (int x = _origin.x; x <= _size.y; x++)
+                    {
+                        Vector3Int cordenada = new Vector3Int(x, x, 0);
+                        cordenadas.Add(cordenada);
+
+                    }
+                    return cordenadas;
+                }
+
+            case MapType.Circle:
+                {
+                    for (int x = _origin.x; x < _size.x + _origin.x; x++)
+                    {
+                        for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                        {
+                            Vector3Int cordenada = new Vector3Int(x, y, 0);
+                            cordenadas.Add(cordenada);
+                        }
+
+                    }
+                    cordenadas.Remove(new Vector3Int(17, 3, 0));
+                    cordenadas.Remove(new Vector3Int(17, 4, 0));
+                    cordenadas.Remove(new Vector3Int(18, 3, 0));
+
+                    cordenadas.Remove(new Vector3Int(17, 10, 0));
+                    cordenadas.Remove(new Vector3Int(17, 9, 0));
+                    cordenadas.Remove(new Vector3Int(18, 10, 0));
+
+                    cordenadas.Remove(new Vector3Int(24, 3, 0));
+                    cordenadas.Remove(new Vector3Int(23, 3, 0));
+                    cordenadas.Remove(new Vector3Int(24, 4, 0));
+
+                    cordenadas.Remove(new Vector3Int(24, 10, 0));
+                    cordenadas.Remove(new Vector3Int(23, 10, 0));
+                    cordenadas.Remove(new Vector3Int(24, 9, 0));
+                    return cordenadas;
+
+                }
+
+        }
+        return cordenadas;
+    }
+
+    public void Render(List<Vector3Int> cordenadas, Tile tile)
+    {
+        foreach (var coordenada in cordenadas)
+        {
+            _tilemap.SetTile(coordenada, tile);
+        }
     }
 }
