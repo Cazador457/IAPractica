@@ -41,17 +41,25 @@ public class TileMapController : MonoBehaviour
         //5.Asignarle a tilemap el padre grid
         tilemap.transform.parent = grid.transform;
 
-        Tilemap map = tilemap.GetComponent<Tilemap>();
-        Rectangle00(map);
+        Tilemap maptile = tilemap.GetComponent<Tilemap>();
+        /*Rectangle00(map);
         Rectangle01(map);
         Rectangle02(map);
         Line00(map);
-        Triangle00(map);
+        Triangle00(map);*/
+        Rectangle(maptile, tiles[0], mapOrigin[0], mapSize[0]);
+        Rectangle(maptile, tiles[1], mapOrigin[0], mapSize[0]);
+        Rectangle(maptile, tiles[2], mapOrigin[0], mapSize[0]);
     }
 
+    private void Rectangle(Tilemap tilemap, Tile tile,Vector2Int mapOrigin, Vector2Int mapSize)
+    {
+        Map map = new Map(mapOrigin, mapSize, tilemap, Map.MapType.Rectangle);
+        List<Vector3Int> coordenadas = map.GenerateCoordinates();
+        map.Render(coordenadas, tile);
+    }
 
-    
-    private void Rectangle00(Tilemap tilemap)
+    /*private void Rectangle00(Tilemap tilemap)
     {
         Map map = new Map(mapOrigin[0], mapSize[0], tilemap, Map.MapType.Rectangle);
         List<Vector3Int> coordenadas = map.GenerateCoordinates();
@@ -69,7 +77,31 @@ public class TileMapController : MonoBehaviour
         List<Vector3Int> coordenadas = map.GenerateCoordinates();
         map.Render(coordenadas, tiles[2]);
     }
-    private void Line00(Tilemap tilemap)
+    private void Rectangle03(Tilemap tilemap)
+    {
+        Map map = new Map(mapOrigin[3], mapSize[3], tilemap, Map.MapType.Rectangle);
+        List<Vector3Int> coordenadas = map.GenerateCoordinates();
+        map.Render(coordenadas, tiles[3]);
+    }
+    private void Rectangle04(Tilemap tilemap)
+    {
+        Map map = new Map(mapOrigin[2], mapSize[2], tilemap, Map.MapType.Rectangle);
+        List<Vector3Int> coordenadas = map.GenerateCoordinates();
+        map.Render(coordenadas, tiles[2]);
+    }
+    private void Rectangle05(Tilemap tilemap)
+    {
+        Map map = new Map(mapOrigin[2], mapSize[2], tilemap, Map.MapType.Rectangle);
+        List<Vector3Int> coordenadas = map.GenerateCoordinates();
+        map.Render(coordenadas, tiles[2]);
+    }
+    private void Rectangle06(Tilemap tilemap)
+    {
+        Map map = new Map(mapOrigin[2], mapSize[2], tilemap, Map.MapType.Rectangle);
+        List<Vector3Int> coordenadas = map.GenerateCoordinates();
+        map.Render(coordenadas, tiles[2]);
+    }
+    /*private void Line00(Tilemap tilemap)
     {
         Map map = new Map(mapOrigin[3], mapSize[3], tilemap, Map.MapType.Line);
         List<Vector3Int> coordenadas = map.GenerateCoordinates();
