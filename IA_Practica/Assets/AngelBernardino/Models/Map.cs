@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class Map
 {
-    public enum MapType { Rectangle, Triangle, Line, Circle };
+    public enum MapType { Rectangle, Triangle,Triangle0, Line, Circle };
     private Vector2Int _origin;
     private Vector2Int _size;
     private Tilemap _tilemap;
@@ -40,6 +40,19 @@ public class Map
                     for (int x = _origin.x; x < _size.x + _origin.x; x++)
                     {
                         for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                        {
+                            Vector3Int cordenada = new Vector3Int(x, y, 0);
+                            cordenadas.Add(cordenada);
+                        }
+                        _size.y--;
+                    }
+                    return cordenadas;
+                }
+            case MapType.Triangle0:
+                {
+                    for (int x = _origin.x; x < _size.y + _origin.y; x++)
+                    {
+                        for (int y = _origin.y; y < _size.x + _origin.x; y++)
                         {
                             Vector3Int cordenada = new Vector3Int(x, y, 0);
                             cordenadas.Add(cordenada);

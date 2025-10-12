@@ -3,7 +3,7 @@ using UnityEngine;
 public class Character
 {
     private int _health;
-    public int Healt
+    public int healt
     {
         get
         {
@@ -27,7 +27,7 @@ public class Character
         }
     }
     private float _damageHit;
-    public float _DamageHit
+    public float damageHit
     {
         get
         {
@@ -39,7 +39,7 @@ public class Character
         }
     }
     private float _jumpHeight;
-    public float JumpHeight
+    public float jumpHeight
     {
         get
         {
@@ -51,7 +51,7 @@ public class Character
         }
     }
     private float _cooldown;
-    public float Colldown
+    public float colldown
     {
         get
         {
@@ -61,5 +61,10 @@ public class Character
         {
 
         }
+    }
+    public Character(float velocity, float jump)
+    {
+        velocityMovement = velocity;
+        jumpHeight = jump;
     }
 }
